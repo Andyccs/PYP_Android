@@ -2,15 +2,19 @@ package com.humblecoder.pyp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.R.layout.*;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -32,7 +36,12 @@ public class SubmitAnswerActivity extends Activity {
     @InjectView(R.id.answer_image)
     ImageView answer;
 
+    @InjectView(R.id.submit_button)
+    Button submit;
+
     Context context;
+
+    public static final int REQUEST_IMAGE_CAPTURE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +57,29 @@ public class SubmitAnswerActivity extends Activity {
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);
                 adapter.addAll("CZ3002 Advanced Computer Eng","CZ3003 Hello World");
                 courseSelection.setAdapter(adapter);
+
+                ArrayAdapter<Integer> year = new ArrayAdapter<Integer>(context, android.R.layout.simple_list_item_1);
+                year.addAll(2010,2011,2012,2013,2014,2015);
+                yearSelection.setAdapter(year);
+
+                answer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //open camera
+                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                        }
+                    }
+                });
+
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //submit answer
+                        
+                    }
+                });
             }
         });
         initialization.run();
@@ -71,5 +103,14 @@ public class SubmitAnswerActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            answer.setImageBitmap(imageBitmap);
+        }
     }
 }
