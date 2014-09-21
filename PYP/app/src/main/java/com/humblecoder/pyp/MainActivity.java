@@ -18,6 +18,8 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
+    List<Question> questions;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +32,22 @@ public class MainActivity extends Activity {
             @Override
             public void done(List<ParseObject> parseObjects, ParseException e) {
                 if (e == null) {
+                    questions = new List<Question>();
+
                     for(ParseObject o : parseObjects){
-                        Log.d("Test", "Content: " + o.getString("content") + ", Content Type: " + o.getInt("contentType")
-                         + ", Question No: " + o.getString("questionNo"));
+
+                        questions.add((Question) o);
                     }
                 } else {
                     Log.e("Error", "Cannot retrieve Question objects");
                 }
             }
         });
+
+        for(int i = 0; i < questions.size(); i++) {
+            Log.d("Test", "Content: " + questions[i].getContent() + ", Content Type: " + questions[i].getContentType()
+                         + ", Question No: " + questions[i].getQuestionNo());
+        }
     }
 
 
