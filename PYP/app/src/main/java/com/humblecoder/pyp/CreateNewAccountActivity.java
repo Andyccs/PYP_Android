@@ -20,7 +20,7 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 
-public class CreateNewAccountActivity extends Activity {
+public class CreateNewAccountActivity extends PYPActivity {
 
     @InjectView(R.id.text)
     TextView registerTitle;

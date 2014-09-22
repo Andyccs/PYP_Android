@@ -28,7 +28,7 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends PYPActivity {
 
     @InjectView(R.id.username)
     EditText usernameField;
