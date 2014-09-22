@@ -11,6 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import timber.log.Timber;
+
 
 public class MainActivity extends Activity {
 
@@ -19,7 +21,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        overridePendingTransition(R.anim.zoom_out_from_top_to_center,0);
+        overridePendingTransition(R.anim.zoom_out_from_top_to_center, 0);
 
         Button b = (Button)findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
