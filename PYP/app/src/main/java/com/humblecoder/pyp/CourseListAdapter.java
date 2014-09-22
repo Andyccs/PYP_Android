@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.List;
 import java.util.ResourceBundle;
 
 import butterknife.ButterKnife;
@@ -41,6 +42,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 
     private Context context;
 
+    private List<Course> courses;
+
     // Provide a suitable constructor (depends on the kind of dataset)
     public CourseListAdapter(Context context) {
         this.context = context;
@@ -67,14 +70,22 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
 //        holder.mTextView.setText(mDataset[position]);
-        holder.courseCode.setText("CZ3002");
-        holder.courseName.setText("Advance Software engineering");
+        holder.courseCode.setText(courses.get(position).getCourseCode());
+        holder.courseName.setText(courses.get(position).getCourseName());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
 //        return mDataset.length;
-        return 10;
+        return courses!=null?courses.size():0;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

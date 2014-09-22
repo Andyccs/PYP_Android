@@ -4,11 +4,18 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import timber.log.Timber;
 
 
 public class CourseListActivity extends Activity {
@@ -16,7 +23,7 @@ public class CourseListActivity extends Activity {
     @InjectView(R.id.activity_course_list_view)
     RecyclerView recyclerView;
 
-    private RecyclerView.Adapter mAdapter;
+    private CourseListAdapter mAdapter;
 
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -38,6 +45,29 @@ public class CourseListActivity extends Activity {
         // specify an adapter (see also next example)
         mAdapter = new CourseListAdapter(this);
         recyclerView.setAdapter(mAdapter);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Course");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    List<Course> courses = new ArrayList<Course>();
+                    for(ParseObject o: objects){
+                        Course course = new Course(
+                                o.getObjectId(),
+                                o.get("courseCode").toString(),
+                                o.get("courseTitle").toString(),
+                                o.get("courseDescription").toString());
+                        courses.add(course);
+                    }
+                    mAdapter.setCourses(courses);
+                    mAdapter.notifyDataSetChanged();
+                } else {
+                    //objectRetrievalFailed();
+                    Timber.e(e.getMessage());
+                }
+            }
+        });
+
     }
 
 

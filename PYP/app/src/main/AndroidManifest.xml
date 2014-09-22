@@ -26,7 +26,8 @@
         </activity>
         <activity
             android:name="com.humblecoder.pyp.CreateNewAccountActivity"
-            android:label="@string/title_activity_create_new_account" >
+            android:label="@string/title_activity_create_new_account"
+            android:parentActivityName=".LoginActivity">
         </activity>
         <activity
             android:name="com.humblecoder.pyp.CourseListActivity"
