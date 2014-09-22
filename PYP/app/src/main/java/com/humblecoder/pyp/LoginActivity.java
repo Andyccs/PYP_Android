@@ -1,6 +1,7 @@
 package com.humblecoder.pyp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,6 +71,9 @@ public class LoginActivity extends Activity {
     @OnClick(R.id.create_account_button)
     public void createAccount(){
         Timber.d("Creating Account");
+
+        Intent intent = new Intent(this, CreateNewAccountActivity.class);
+        startActivity(intent);
     }
 
     @Override
