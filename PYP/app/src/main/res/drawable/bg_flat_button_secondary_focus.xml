@@ -5,7 +5,7 @@
         android:width="0dp"
         android:color="#ffffff" />
 
-    <solid android:color="#00362D" />
+    <solid android:color="@color/secondary_button_focus" />
 
     <corners
         android:radius="0dp"/>

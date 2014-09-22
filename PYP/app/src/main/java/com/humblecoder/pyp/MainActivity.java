@@ -21,7 +21,6 @@ public class MainActivity extends PYPActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         overridePendingTransition(R.anim.zoom_out_from_top_to_center, 0);
 
         Button b = (Button)findViewById(R.id.button);

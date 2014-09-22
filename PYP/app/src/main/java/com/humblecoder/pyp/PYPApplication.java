@@ -2,12 +2,7 @@ package com.humblecoder.pyp;
 
 import android.app.Application;
 
-import com.parse.FindCallback;
 import com.parse.Parse;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
-import java.util.List;
 
 import timber.log.Timber;
 
