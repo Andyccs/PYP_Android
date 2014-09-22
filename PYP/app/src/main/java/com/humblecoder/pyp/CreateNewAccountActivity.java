@@ -68,6 +68,7 @@ public class CreateNewAccountActivity extends PYPActivity {
                                     // TODO go to main page
                                     Intent intent = new Intent(getApplicationContext(),CourseListActivity.class);
                                     startActivity(intent);
+                                    finish();
                                 } else {
                                     // Signup failed.
                                     // Look at the ParseException to see what happened.
