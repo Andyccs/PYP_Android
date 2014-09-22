@@ -5,41 +5,80 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+import timber.log.Timber;
 
 
 public class CreateNewAccountActivity extends Activity {
+
+    @InjectView(R.id.text)
+    TextView registerTitle;
+
+    @InjectView(R.id.email)
+    EditText emailField;
+
+    @InjectView(R.id.username)
+    EditText usernameField;
+
+    @InjectView(R.id.password)
+    EditText passwordField;
+
+    @InjectView(R.id.confirm_password)
+    EditText confirmPasswordField;
+
+    @OnClick(R.id.create_account_button)
+    public void createAccount(){
+        String username = usernameField.getText().toString();
+        String password = passwordField.getText().toString();
+        String email = emailField.getText().toString();
+        String confirmPassword = confirmPasswordField.getText().toString();
+
+        if(username.isEmpty() || password.isEmpty() || email.isEmpty() || confirmPassword.isEmpty()|| !password.equals(confirmPassword)){
+            //reject request, show dialog box here
+            Timber.w("some fields are empty or password not same");
+        }else {
+
+            ParseUser user = new ParseUser();
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setEmail(email);
+
+            user.signUpInBackground(new SignUpCallback() {
+                public void done(ParseException e) {
+                    if (e == null) {
+                        // Hooray! Let them use the app now.
+                        Timber.d("Create account complete");
+                    } else {
+                        // Sign up didn't succeed. Look at the ParseException
+                        // to figure out what went wrong
+                        Timber.e("Sign up failed");
+                        Timber.e(e.getMessage());
+                    }
+                }
+            });
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_account);
 
-        TextView myTextView=(TextView)findViewById(R.id.text);
+        ButterKnife.inject(this);
+
         Typeface typeFace= Typeface.createFromAsset(getAssets(), "fonts/lobster.ttf");
-        myTextView.setTypeface(typeFace);
-    }
+        registerTitle.setTypeface(typeFace);
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.create_new_account, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

@@ -108,7 +108,7 @@
             android:hint="comfirm password"
             android:background="@drawable/bg_rounded_corner_right"
             android:inputType="textPassword"
-            android:id="@+id/comfirm_password"/>
+            android:id="@+id/confirm_password"/>
     </LinearLayout>
 
     <Button
@@ -119,6 +119,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_below="@+id/comfirm_password_row"
-        android:id="@+id/create_new_account_button"/>
+        android:id="@+id/create_account_button"/>
 
 </RelativeLayout>
