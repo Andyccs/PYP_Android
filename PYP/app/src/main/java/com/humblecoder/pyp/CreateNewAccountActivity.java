@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -38,8 +39,8 @@ public class CreateNewAccountActivity extends Activity {
 
     @OnClick(R.id.create_account_button)
     public void createAccount(){
-        String username = usernameField.getText().toString();
-        String password = passwordField.getText().toString();
+        final String username = usernameField.getText().toString();
+        final String password = passwordField.getText().toString();
         String email = emailField.getText().toString();
         String confirmPassword = confirmPasswordField.getText().toString();
 
@@ -58,6 +59,22 @@ public class CreateNewAccountActivity extends Activity {
                     if (e == null) {
                         // Hooray! Let them use the app now.
                         Timber.d("Create account complete");
+                        ParseUser.logInInBackground(username, password, new LogInCallback() {
+                            public void done(ParseUser user, ParseException e) {
+                                if (user != null) {
+                                    // Hooray! The user is logged in.
+
+                                    // TODO go to main page
+
+                                } else {
+                                    // Signup failed.
+                                    // Look at the ParseException to see what happened.
+                                    Timber.e("Sign up failed");
+                                    Timber.e(e.getMessage());
+                                }
+                            }
+                        });
+
                     } else {
                         // Sign up didn't succeed. Look at the ParseException
                         // to figure out what went wrong

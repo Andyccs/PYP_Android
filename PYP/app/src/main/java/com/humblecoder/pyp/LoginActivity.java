@@ -52,12 +52,14 @@ public class LoginActivity extends Activity {
 
         }else{
             //try login
-            Timber.d("username: "+username+", password: "+password);
             ParseUser.logInInBackground(username, password, new LogInCallback() {
                 public void done(ParseUser user, ParseException e) {
                     if (user != null) {
                         // Hooray! The user is logged in.
                         Timber.d("Loged in");
+
+                        // TODO go to main page
+
                     } else {
                         // Signup failed. Look at the ParseException to see what happened.
                         Timber.e("Log in failed");
@@ -84,5 +86,15 @@ public class LoginActivity extends Activity {
         overridePendingTransition(R.anim.zoom_out_from_top_to_center,0);
 
         ButterKnife.inject(this);
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        if (currentUser != null) {
+            // TODO go to main page
+
+
+        }
     }
+
+
 }
