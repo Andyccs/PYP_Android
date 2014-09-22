@@ -18,14 +18,13 @@
     <item name="primary_dark" type="color">#003c36</item>
     <item name="accent" type="color">#000f0d</item>
 
-
     <item name="primary_button" type="color">#ffc107</item>
     <item name="primary_button_focus" type="color">#FF8705</item>
-
 
     <item name="secondary_button" type="color">#004D40</item>
     <item name="secondary_button_focus" type="color">#00362D</item>
 
+    <item name="card_focus" type="color">#b2b2b2</item>
 
     <item name="hint_text" type="color">#A3A3A3</item>
 

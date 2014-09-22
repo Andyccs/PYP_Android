@@ -28,6 +28,10 @@
             android:name="com.humblecoder.pyp.CreateNewAccountActivity"
             android:label="@string/title_activity_create_new_account" >
         </activity>
+        <activity
+            android:name="com.humblecoder.pyp.CourseListActivity"
+            android:label="@string/title_activity_course_list" >
+        </activity>
     </application>
 
 </manifest>

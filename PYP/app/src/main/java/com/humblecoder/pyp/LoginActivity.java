@@ -59,7 +59,8 @@ public class LoginActivity extends PYPActivity {
                         Timber.d("Loged in");
 
                         // TODO go to main page
-
+                        Intent intent = new Intent(getApplicationContext(),CourseListActivity.class);
+                        startActivity(intent);
                     } else {
                         // Signup failed. Look at the ParseException to see what happened.
                         Timber.e("Log in failed");
@@ -91,7 +92,8 @@ public class LoginActivity extends PYPActivity {
 
         if (currentUser != null) {
             // TODO go to main page
-
+            Intent intent = new Intent(getApplicationContext(),CourseListActivity.class);
+            startActivity(intent);
 
         }
     }
