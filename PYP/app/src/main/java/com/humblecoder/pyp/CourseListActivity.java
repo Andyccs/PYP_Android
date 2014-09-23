@@ -1,8 +1,11 @@
 package com.humblecoder.pyp;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -14,14 +17,13 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
-
+@TargetApi(21)
 public class CourseListActivity extends Activity {
 
     @InjectView(R.id.activity_course_list_view)
@@ -34,6 +36,7 @@ public class CourseListActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_course_list);
 
         ButterKnife.inject(this);
@@ -50,21 +53,25 @@ public class CourseListActivity extends Activity {
         mAdapter = new CourseListAdapter(this);
         recyclerView.setAdapter(mAdapter);
 
+        int API_LEVEL = Build.VERSION.SDK_INT;
+        if (API_LEVEL >= 21) {
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            Timber.d("adding animation");
+        }
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Course");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
-                    List<Course> courses = new ArrayList<Course>();
+                    int i = 0;
                     for(ParseObject o: objects){
                         Course course = new Course(
                                 o.getObjectId(),
                                 o.get("courseCode").toString(),
                                 o.get("courseTitle").toString(),
                                 o.get("courseDescription").toString());
-                        courses.add(course);
+                        mAdapter.addCourse(course);
                     }
-                    mAdapter.setCourses(courses);
-                    mAdapter.notifyDataSetChanged();
                 } else {
                     //objectRetrievalFailed();
                     Timber.e(e.getMessage());

@@ -29,6 +29,6 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="213dp" />
+        android:background="@drawable/bg_flat_button_primary_selector"/>
     </RelativeLayout>
 </RelativeLayout>

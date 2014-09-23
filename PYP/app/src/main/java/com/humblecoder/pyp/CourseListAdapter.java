@@ -1,18 +1,15 @@
 package com.humblecoder.pyp;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -20,6 +17,7 @@ import butterknife.InjectView;
 /**
  * Created by Andy on 9/22/2014.
  */
+@TargetApi(21)
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.ViewHolder> {
 
     // Provide a reference to the type of views that you are using
@@ -72,6 +70,19 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 //        holder.mTextView.setText(mDataset[position]);
         holder.courseCode.setText(courses.get(position).getCourseCode());
         holder.courseName.setText(courses.get(position).getCourseName());
+
+
+    }
+
+    @Override
+    public void onViewAttachedToWindow(ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+
+//        context.getResources().getAnimation(android.R.interpolator.fast_out_slow_in);
+//        @interpolator/fast_out_slow_in.xml
+//        ObjectAnimator mAnimator;
+//        mAnimator = ObjectAnimator.ofFloat(holder.view, View.X, View.Y, path);
+//        mAnimator.start();
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -87,5 +98,14 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+        notifyItemRangeChanged(0, courses.size());
+    }
+
+    public void addCourse(Course course){
+        if(this.courses == null){
+            courses = new ArrayList<Course>();
+        }
+        this.courses.add(course);
+        notifyItemInserted(courses.size()-1);
     }
 }
