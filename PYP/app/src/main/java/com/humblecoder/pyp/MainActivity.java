@@ -29,28 +29,27 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+        answers = new ArrayList<Answer>();
+        ParseObject.registerSubclass(Answer.class);
 
         Parse.initialize(this, "cztzxFVJLJ3PCoSGJeyWU9PX0S8nsNlXtIIwIV98", "VZnqAvCGLZiBaDcrSPFLAY8jgQhP5dwUJdAfRbAx");
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(Answer.getParseClassName());
-        query.findInBackground(new FindCallback<ParseObject>() {
+        ParseQuery<Answer> query = ParseQuery.getQuery(Answer.class);
+        query.findInBackground(new FindCallback<Answer>() {
             @Override
-            public void done(List<ParseObject> parseObjects, ParseException e) {
-                if (e == null) {
-                    answers = new ArrayList<Answer>();
-                    System.out.println("Here"+parseObjects);
-                    for(ParseObject o : parseObjects){
-                        System.out.println("Here"+o);
-                        answers.add((Answer) o);
-                    }
-                } else {
-                    Log.e("Error", "Cannot retrieve Question objects");
+            public void done(List<Answer> results, ParseException e) {
+                for(Answer answer : results){
+                    answers.add(answer);
+                }
+                for(int i = 0; i < answers.size(); i++) {
+                    Toast.makeText(context,"Content: " + answers.get(i).getContent() + ", Content Type: " + answers.get(i).getContentType()
+                            + ", Question: " + answers.get(i).getQuestion() + ", Ranking: " + answers.get(i).getRanking(),Toast.LENGTH_LONG).show();
                 }
             }
         });
 
         for(int i = 0; i < answers.size(); i++) {
-            Toast.makeText(this,"Content: " + answers.get(i).getContent() + ", Content Type: " + answers.get(i).getContentType()
+            Toast.makeText(context,"Content: " + answers.get(i).getContent() + ", Content Type: " + answers.get(i).getContentType()
                     + ", Question: " + answers.get(i).getQuestion() + ", Ranking: " + answers.get(i).getRanking(),Toast.LENGTH_LONG).show();
         }
     }

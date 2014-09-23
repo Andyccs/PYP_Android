@@ -1,10 +1,12 @@
 package com.humblecoder.pyp.models;
 
+import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 /**
  * Created by WeeLiang on 19/9/2014.
  */
+@ParseClassName ("Answer")
 public class Answer extends ParseObject{
 
     private String content;
@@ -12,6 +14,9 @@ public class Answer extends ParseObject{
     private Question question;
     private int ranking;
     //private User user;
+
+    public Answer(){
+    }
 
     public static String getParseClassName(){
         return "Answer";
@@ -26,7 +31,7 @@ public class Answer extends ParseObject{
 
     public Question getQuestion() {
         //return getParseObject(Question.getParseClassName());
-        return (Question)get("question");
+        return get("question");
     }
 
     public int getRanking() {
