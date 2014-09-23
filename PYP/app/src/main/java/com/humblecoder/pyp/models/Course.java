@@ -27,4 +27,22 @@ public class Course extends ParseObject {
     public void setCourseCode(String courseCode) {
         put("courseCode", courseCode);
         saveInBackground();
+
+    public String getCourseDescription(){
+
+        return getString("courseDescription");
+    }
+
+    public setCourseDescription(String courseDescription){
+        put("courseDescription", courseDescription);
+    }
+
+    public getCourseTitle(){
+        return getString("courseTitle");
+    }
+
+    public setCourseTitle(String courseTitle){
+        return put("courseTitle", courseTitle);
+    }
+}
 }
