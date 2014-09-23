@@ -15,6 +15,8 @@ public class Paper extends ParseObject {
         return "Paper";
     }
 
+    public String getPaperId() {return getObjectId();}
+
     public String getAcademicYear() {
         return getString("academicYear");
     }
@@ -31,5 +33,12 @@ public class Paper extends ParseObject {
         put("semester", semester);
     }
 
-    //Todo: getter and setter for Course
+    public ParseObject getCourse() {
+        return getParseObject("course");
+    }
+
+    public void setCourse(String courseId) {
+        put("course", ParseObject.createWithoutData("Course", courseId));
+        saveInBackground();
+    }
 }
