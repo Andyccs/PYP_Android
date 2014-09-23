@@ -29,9 +29,9 @@ public class Answer extends ParseObject{
         return getInt("contentType");
     }
 
-    public Question getQuestion() {
+    public ParseObject getQuestion() {
         //return getParseObject(Question.getParseClassName());
-        return get("question");
+        return getParseObject("question");
     }
 
     public int getRanking() {

@@ -9,8 +9,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.humblecoder.pyp.models.Answer;
+import com.humblecoder.pyp.models.Paper;
 import com.humblecoder.pyp.models.Question;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -24,6 +26,8 @@ public class MainActivity extends Activity {
 
     List<Answer> answers;
     Context context;
+    String paperId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,9 @@ public class MainActivity extends Activity {
         context = this;
         answers = new ArrayList<Answer>();
         ParseObject.registerSubclass(Answer.class);
+
+        ParseObject.registerSubclass(Question.class);
+        ParseObject.registerSubclass(Paper.class);
 
         Parse.initialize(this, "cztzxFVJLJ3PCoSGJeyWU9PX0S8nsNlXtIIwIV98", "VZnqAvCGLZiBaDcrSPFLAY8jgQhP5dwUJdAfRbAx");
 
@@ -52,8 +59,30 @@ public class MainActivity extends Activity {
             Toast.makeText(context,"Content: " + answers.get(i).getContent() + ", Content Type: " + answers.get(i).getContentType()
                     + ", Question: " + answers.get(i).getQuestion() + ", Ranking: " + answers.get(i).getRanking(),Toast.LENGTH_LONG).show();
         }
-    }
 
+        ParseQuery<Question> query2 = ParseQuery.getQuery(Question.class);
+        query2.findInBackground(new FindCallback<Question>() {
+            @Override
+            public void done(List<Question> questions, ParseException e) {
+                if (e == null) {
+                    for(Question q : questions){
+
+
+//                        //Update attributes. It Works!!! :)
+//                        q.setContentType(1);
+//                        //q.setPaper("lgvQJosRx0");
+
+                        //Testing to see if query works
+                        Log.d("Test", "Content: " + q.getContent() + ", Content Type: " + q.getContentType()
+                                + ", Question No: " + q.getQuestionNo() + ", Paper: " + q.getPaper().getObjectId());
+                    }
+                } else {
+                    Log.e("Error", "Cannot retrieve Question objects");
+                }
+            }
+        });
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
