@@ -11,7 +11,7 @@ public class Answer extends ParseObject{
     private int contentType;
     private Question question;
     private int ranking;
-    private User user;
+    //private User user;
 
     public static String getParseClassName(){
         return "Answer";
@@ -33,9 +33,9 @@ public class Answer extends ParseObject{
         return getInt("ranking");
     }
 
-    public User getUser() {
-        return (User)get("user");
-    }
+//    public User getUser() {
+//        return (User)get("user");
+//    }
 
 
 }
