@@ -1,12 +1,9 @@
 package com.humblecoder.pyp;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.parse.LogInCallback;
@@ -65,7 +62,9 @@ public class CreateNewAccountActivity extends PYPActivity {
                                     // Hooray! The user is logged in.
 
                                     // TODO go to main page
-
+                                    Intent intent = new Intent(getApplicationContext(),CourseListActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     // Signup failed.
                                     // Look at the ParseException to see what happened.

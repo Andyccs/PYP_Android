@@ -1,26 +1,13 @@
 package com.humblecoder.pyp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
-import com.parse.FindCallback;
 import com.parse.LogInCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -59,7 +46,9 @@ public class LoginActivity extends PYPActivity {
                         Timber.d("Loged in");
 
                         // TODO go to main page
-
+                        Intent intent = new Intent(getApplicationContext(),CourseListActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else {
                         // Signup failed. Look at the ParseException to see what happened.
                         Timber.e("Log in failed");
@@ -91,7 +80,9 @@ public class LoginActivity extends PYPActivity {
 
         if (currentUser != null) {
             // TODO go to main page
-
+            Intent intent = new Intent(getApplicationContext(),CourseListActivity.class);
+            startActivity(intent);
+            finish();
 
         }
     }
