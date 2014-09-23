@@ -16,11 +16,8 @@ public class PYPActivity extends Activity {
         super.onCreate(savedInstanceState);
         int API_LEVEL = Build.VERSION.SDK_INT;
 
-        if (API_LEVEL == Build.VERSION_CODES.KITKAT) {
+        if (API_LEVEL >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
-        if (API_LEVEL <= Build.VERSION_CODES.KITKAT) {
             // create our manager instance after the content view is set
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
