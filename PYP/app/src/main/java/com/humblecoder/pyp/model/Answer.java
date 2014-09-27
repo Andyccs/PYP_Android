@@ -1,4 +1,4 @@
-package com.humblecoder.pyp.models;
+package com.humblecoder.pyp.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

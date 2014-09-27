@@ -2,7 +2,7 @@ package com.humblecoder.pyp;
 
 import android.app.Application;
 
-import com.humblecoder.pyp.models.*;
+import com.humblecoder.pyp.model.*;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -21,7 +21,7 @@ public class PYPApplication extends Application {
         ParseObject.registerSubclass(_User.class);
         ParseObject.registerSubclass(Answer.class);
         ParseObject.registerSubclass(Comment.class);
-        ParseObject.registerSubclass(com.humblecoder.pyp.models.Course.class);
+        ParseObject.registerSubclass(com.humblecoder.pyp.model.Course.class);
         ParseObject.registerSubclass(Flag.class);
         ParseObject.registerSubclass(Paper.class);
         ParseObject.registerSubclass(Question.class);

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.humblecoder.pyp.models.Course;
+import com.humblecoder.pyp.model.Course;
 
 import java.util.ArrayList;
 import java.util.List;

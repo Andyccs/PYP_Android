@@ -1,4 +1,4 @@
-package com.humblecoder.pyp.models;
+package com.humblecoder.pyp.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
@@ -6,35 +6,13 @@ import com.parse.ParseObject;
 /**
  * Created by User on 23-Sep-14.
  */
-@ParseClassName("Comment")
-public class Comment extends ParseObject {
+@ParseClassName("Flag")
+public class Flag extends ParseObject{
 
-    public Comment() {}
+    public Flag() {}
 
     public static String getParseClassName() {
-        return "Comment";
-    }
-
-    public String getCommentId() {
-        return getObjectId();
-    }
-
-    public String getContent() {
-        return getString("content");
-    }
-
-    public void setContent(String content) {
-        put("content", content);
-        saveInBackground();
-    }
-
-    public int getContentType() {
-        return getInt("contentType");
-    }
-
-    public void setContentType(int contentType) {
-        put("contentType", contentType);
-        saveInBackground();
+        return "Flag";
     }
 
     public ParseObject getAnswer() {
@@ -52,6 +30,15 @@ public class Comment extends ParseObject {
 
     public void setUser(String userId) {
         put("user", ParseObject.createWithoutData("User", userId));
+        saveInBackground();
+    }
+
+    public String getMessage() {
+        return getString("message");
+    }
+
+    public void setMessage(String message) {
+        put("message", message);
         saveInBackground();
     }
 }
