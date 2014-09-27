@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.humblecoder.pyp" >
+    package="com.humblecoder.pyp" > <!-- targetSdkVersion set to 19 from build.gradle on non-L-preview builds -->
+    <uses-sdk tools:node="replace" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- targetSdkVersion set to 19 from build.gradle on non-L-preview builds -->
-    <uses-sdk
-        tools:node="replace" />
 
     <application
         android:name="com.humblecoder.pyp.PYPApplication"
@@ -16,7 +13,6 @@
         android:icon="@drawable/application_main_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name="com.humblecoder.pyp.LoginActivity"
             android:label="@string/app_name" >
@@ -29,11 +25,19 @@
         <activity
             android:name="com.humblecoder.pyp.CreateNewAccountActivity"
             android:label="@string/title_activity_create_new_account"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName="com.humblecoder.pyp.LoginActivity" >
         </activity>
         <activity
             android:name="com.humblecoder.pyp.CourseListActivity"
             android:label="@string/title_activity_course_list" >
+        </activity>
+        <activity
+            android:name="com.humblecoder.pyp.SemesterListActivity"
+            android:label="@string/title_activity_semester_list"
+            android:parentActivityName="com.humblecoder.pyp.CourseListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.humblecoder.pyp.CourseListActivity" />
         </activity>
     </application>
 
