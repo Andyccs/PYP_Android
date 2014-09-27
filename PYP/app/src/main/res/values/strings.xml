@@ -9,5 +9,6 @@
     <string name="title_activity_course_list">Courses</string>
     <string name="title_activity_semester_list">Semesters</string>
     <string name="title_activity_question_list">Questions</string>
+    <string name="title_activity_answer_list">AnswerListActivity</string>
 
 </resources>

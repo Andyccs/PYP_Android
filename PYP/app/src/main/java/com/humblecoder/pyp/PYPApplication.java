@@ -18,7 +18,6 @@ public class PYPApplication extends Application {
 
         Timber.plant(new Timber.DebugTree());
 
-        ParseObject.registerSubclass(_User.class);
         ParseObject.registerSubclass(Answer.class);
         ParseObject.registerSubclass(Comment.class);
         ParseObject.registerSubclass(com.humblecoder.pyp.model.Course.class);

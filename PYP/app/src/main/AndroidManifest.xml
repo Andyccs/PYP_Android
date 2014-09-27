@@ -42,7 +42,15 @@
         <activity
             android:name="com.humblecoder.pyp.QuestionListActivity"
             android:label="@string/title_activity_question_list"
-            android:parentActivityName=".SemesterListActivity">
+            android:parentActivityName="com.humblecoder.pyp.SemesterListActivity" >
+        </activity>
+        <activity
+            android:name="com.humblecoder.pyp.AnswerListActivity"
+            android:label="@string/title_activity_answer_list"
+            android:parentActivityName="com.humblecoder.pyp.QuestionListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.humblecoder.pyp.QuestionListActivity" />
         </activity>
     </application>
 

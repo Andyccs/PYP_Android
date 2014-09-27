@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.humblecoder.pyp.model.Paper;
+import com.humblecoder.pyp.model.Answer;
 import com.humblecoder.pyp.model.Question;
 import com.humblecoder.pyp.widget.PYPDialog;
 import com.parse.FindCallback;
@@ -24,26 +24,25 @@ import butterknife.InjectView;
 import timber.log.Timber;
 
 
-public class QuestionListActivity extends Activity {
+public class AnswerListActivity extends Activity {
 
-    @InjectView(R.id.activity_question_list_view)
+    @InjectView(R.id.activity_answer_list_view)
     RecyclerView recyclerView;
 
-    private QuestionListAdapter mAdapter;
+    private AnswerListAdapter mAdapter;
 
     private RecyclerView.LayoutManager mLayoutManager;
 
     PYPDialog dialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_question_list);
+        setContentView(R.layout.activity_answer_list);
 
         String objectId = getIntent().getStringExtra("objectId");
         if(objectId == null){
-            Timber.e("No paper id was given by previous activity");
+            Timber.e("No question id was given by previous activity");
             finish();
         }
 
@@ -58,7 +57,7 @@ public class QuestionListActivity extends Activity {
         recyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new QuestionListAdapter(this);
+        mAdapter = new AnswerListAdapter(this);
         recyclerView.setAdapter(mAdapter);
 
         int API_LEVEL = Build.VERSION.SDK_INT;
@@ -67,25 +66,26 @@ public class QuestionListActivity extends Activity {
             Timber.d("adding animation");
         }
 
-        ParseQuery<Question> query = ParseQuery.getQuery(Question.class);
-        ParseObject object = ParseObject.create("Paper");
+        ParseQuery<Answer> query = ParseQuery.getQuery(Answer.class);
+        ParseObject object = ParseObject.create("Question");
         object.setObjectId(objectId);
 
-        query.whereEqualTo("paper",object);
-        query.addAscendingOrder("questionNo");
+        query.whereEqualTo("question",object);
+        query.addAscendingOrder("ranking");
 
-        dialog = PYPDialog.showProgress(QuestionListActivity.this, "Loading");
-        query.findInBackground(new FindCallback<Question>() {
+        dialog = PYPDialog.showProgress(AnswerListActivity.this, "Loading");
+        query.findInBackground(new FindCallback<Answer>() {
             @Override
-            public void done(List<Question> questions, ParseException e) {
+            public void done(List<Answer> answer, ParseException e) {
                 dialog.dismiss();
                 if(e==null) {
-                    mAdapter.setQuestions(questions);
-                    Timber.d("Get questions successfully: " + questions.size());
+                    mAdapter.setAnswers(answer);
+                    Timber.d("Get questions successfully: " + answer.size());
                 }else{
                     Timber.e("Cannot retrieve questions objects");
                 }
             }
         });
     }
+
 }

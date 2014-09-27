@@ -3,9 +3,14 @@ package com.humblecoder.pyp;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -65,12 +70,13 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
                 .inflate(R.layout.question_list_item, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
+
         return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.question.setText("Question "+ questions.get(position).getQuestionNo());
@@ -83,10 +89,18 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
                 ((Activity)context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-                        holder.answerNo.setText(""+answers.size());
+                        holder.answerNo.setText(Integer.toString(answers.size()));
                     }
                 });
+            }
+        });
+
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, AnswerListActivity.class);
+                intent.putExtra("objectId",questions.get(position).getObjectId());
+                context.startActivity(intent);
             }
         });
     }

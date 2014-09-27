@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<ripple-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:color="@color/card_focus">-->
+    <!--<item android:drawable="@drawable/bg_round_item_default" />-->
+<!--</ripple>-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/bg_flat_item_press" />
+    <item android:state_focused="true" android:drawable="@drawable/bg_flat_item_focus" />
+    <item android:drawable="@drawable/bg_flat_item_transparent_default" />
+</selector>
+
