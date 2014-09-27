@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.humblecoder.pyp.models.Course;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +71,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         // - replace the contents of the view with that element
 //        holder.mTextView.setText(mDataset[position]);
         holder.courseCode.setText(courses.get(position).getCourseCode());
-        holder.courseName.setText(courses.get(position).getCourseName());
+        holder.courseName.setText(courses.get(position).getCourseTitle());
 
 
     }
@@ -98,7 +100,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
-        notifyItemRangeChanged(0, courses.size());
+        notifyDataSetChanged();
     }
 
     public void addCourse(Course course){

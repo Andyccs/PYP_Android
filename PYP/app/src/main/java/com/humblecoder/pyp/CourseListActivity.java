@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.humblecoder.pyp.models.Course;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -59,22 +60,34 @@ public class CourseListActivity extends Activity {
             Timber.d("adding animation");
         }
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Course");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null) {
-                    int i = 0;
-                    for(ParseObject o: objects){
-                        Course course = new Course(
-                                o.getObjectId(),
-                                o.get("courseCode").toString(),
-                                o.get("courseTitle").toString(),
-                                o.get("courseDescription").toString());
-                        mAdapter.addCourse(course);
-                    }
-                } else {
-                    //objectRetrievalFailed();
-                    Timber.e(e.getMessage());
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Course");
+//        query.findInBackground(new FindCallback<ParseObject>() {
+//            public void done(List<ParseObject> objects, ParseException e) {
+//                if (e == null) {
+//                    int i = 0;
+//                    for(ParseObject o: objects){
+//                        Course course = new Course(
+//                                o.getObjectId(),
+//                                o.get("courseCode").toString(),
+//                                o.get("courseTitle").toString(),
+//                                o.get("courseDescription").toString());
+//                        mAdapter.addCourse(course);
+//                    }
+//                } else {
+//                    //objectRetrievalFailed();
+//                    Timber.e(e.getMessage());
+//                }
+//            }
+//        });
+        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+        query.findInBackground(new FindCallback<Course>() {
+            @Override
+            public void done(List<Course> courses, ParseException e) {
+                if(e==null) {
+                    mAdapter.setCourses(courses);
+                    Timber.d("Get courses successfully: "+courses.size());
+                }else{
+                    Timber.e("Cannot retrieve Courses objects");
                 }
             }
         });
