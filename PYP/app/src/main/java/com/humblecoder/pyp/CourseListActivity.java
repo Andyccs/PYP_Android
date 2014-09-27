@@ -59,25 +59,6 @@ public class CourseListActivity extends Activity {
             Timber.d("adding animation");
         }
 
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Course");
-//        query.findInBackground(new FindCallback<ParseObject>() {
-//            public void done(List<ParseObject> objects, ParseException e) {
-//                if (e == null) {
-//                    int i = 0;
-//                    for(ParseObject o: objects){
-//                        Course course = new Course(
-//                                o.getObjectId(),
-//                                o.get("courseCode").toString(),
-//                                o.get("courseTitle").toString(),
-//                                o.get("courseDescription").toString());
-//                        mAdapter.addCourse(course);
-//                    }
-//                } else {
-//                    //objectRetrievalFailed();
-//                    Timber.e(e.getMessage());
-//                }
-//            }
-//        });
         ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
         query.findInBackground(new FindCallback<Course>() {
             @Override

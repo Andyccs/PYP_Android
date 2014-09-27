@@ -72,7 +72,7 @@ public class LoginActivity extends PYPActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        overridePendingTransition(R.anim.zoom_out_from_top_to_center,0);
+        overridePendingTransition(R.anim.zoom_out_from_top_to_center,R.anim.zoom_out_from_center_to_bottom);
 
         ButterKnife.inject(this);
 
