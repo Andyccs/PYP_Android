@@ -15,14 +15,20 @@ public class PYPActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int API_LEVEL = Build.VERSION.SDK_INT;
-
         if (API_LEVEL >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            // create our manager instance after the content view is set
-            SystemBarTintManager tintManager = new SystemBarTintManager(this);
-            tintManager.setStatusBarTintEnabled(true);
-            tintManager.setNavigationBarTintEnabled(true);
-            tintManager.setStatusBarTintResource(R.color.primary_dark);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // create our manager instance after the content view is set
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setNavigationBarTintEnabled(true);
+        tintManager.setTintResource(R.color.primary_dark);
+        tintManager.setNavigationBarTintResource(R.color.primary_dark);
+        tintManager.setStatusBarTintResource(R.color.primary_dark);
     }
 }

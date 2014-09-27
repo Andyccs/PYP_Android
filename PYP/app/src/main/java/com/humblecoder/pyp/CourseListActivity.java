@@ -25,7 +25,7 @@ import butterknife.InjectView;
 import timber.log.Timber;
 
 @TargetApi(21)
-public class CourseListActivity extends Activity {
+public class CourseListActivity extends PYPActivity {
 
     @InjectView(R.id.activity_course_list_view)
     RecyclerView recyclerView;

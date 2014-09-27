@@ -5,4 +5,6 @@
     android:scrollbars="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.humblecoder.pyp.SemesterListActivity"/>
+    tools:context="com.humblecoder.pyp.SemesterListActivity"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"/>

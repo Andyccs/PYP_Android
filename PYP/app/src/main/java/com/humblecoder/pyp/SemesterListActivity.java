@@ -24,7 +24,7 @@ import butterknife.InjectView;
 import timber.log.Timber;
 
 
-public class SemesterListActivity extends Activity {
+public class SemesterListActivity extends PYPActivity {
 
     @InjectView(R.id.activity_semester_list_view)
     RecyclerView recyclerView;
