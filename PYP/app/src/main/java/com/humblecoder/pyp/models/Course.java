@@ -3,9 +3,7 @@ package com.humblecoder.pyp.models;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-/**
- * Created by User on 23-Sep-14.
- */
+
 @ParseClassName("Course")
 public class Course extends ParseObject{
 
@@ -14,4 +12,37 @@ public class Course extends ParseObject{
     public static String getParseClassName() {
         return "Course";
     }
+
+    public String getCourseId() {
+        return getObjectId();
+    }
+
+
+    public String getCourseCode() {
+        return getString("courseCode");
+    }
+
+    public void setCourseCode(String courseCode) {
+        put("courseCode", courseCode);
+        saveInBackground();
+    }
+
+    public String getCourseDescription(){
+        return getString("courseDescription");
+    }
+
+    public void setCourseDescription(String courseDescription){
+        put("courseDescription", courseDescription);
+        saveInBackground();
+    }
+
+    public String getCourseTitle(){
+        return getString("courseTitle");
+    }
+
+    public void setCourseTitle(String courseTitle){
+        put("courseTitle", courseTitle);
+        saveInBackground();
+    }
+
 }
