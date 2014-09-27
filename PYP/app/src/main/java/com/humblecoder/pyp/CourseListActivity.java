@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.humblecoder.pyp.model.Course;
+import com.humblecoder.pyp.widget.PYPDialog;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -32,6 +33,8 @@ public class CourseListActivity extends Activity {
     private CourseListAdapter mAdapter;
 
     private RecyclerView.LayoutManager mLayoutManager;
+
+    PYPDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +63,12 @@ public class CourseListActivity extends Activity {
         }
 
         ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+
+        dialog = PYPDialog.showProgress(CourseListActivity.this, "Loading");
         query.findInBackground(new FindCallback<Course>() {
             @Override
             public void done(List<Course> courses, ParseException e) {
+                dialog.dismiss();
                 if(e==null) {
                     mAdapter.setCourses(courses);
                     Timber.d("Get courses successfully: "+courses.size());

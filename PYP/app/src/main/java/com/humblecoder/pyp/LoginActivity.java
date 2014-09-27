@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.humblecoder.pyp.widget.PYPDialog;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -29,6 +30,8 @@ public class LoginActivity extends PYPActivity {
     @InjectView(R.id.create_account_button)
     Button createAccount;
 
+    PYPDialog dialog;
+
     @OnClick(R.id.login_button)
     public void login(){
         Timber.d("Loging in");
@@ -39,8 +42,11 @@ public class LoginActivity extends PYPActivity {
 
         }else{
             //try login
+            dialog = PYPDialog.showProgress(LoginActivity.this, "Logging in");
             ParseUser.logInInBackground(username, password, new LogInCallback() {
+
                 public void done(ParseUser user, ParseException e) {
+                    dialog.dismiss();
                     if (user != null) {
                         // Hooray! The user is logged in.
                         Timber.d("Loged in");

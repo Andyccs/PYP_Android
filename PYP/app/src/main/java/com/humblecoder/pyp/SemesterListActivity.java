@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.humblecoder.pyp.model.Course;
 import com.humblecoder.pyp.model.Paper;
+import com.humblecoder.pyp.widget.PYPDialog;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -31,6 +32,8 @@ public class SemesterListActivity extends Activity {
     private SemesterListAdapter mAdapter;
 
     private RecyclerView.LayoutManager mLayoutManager;
+
+    PYPDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +72,12 @@ public class SemesterListActivity extends Activity {
         object.setObjectId(objectId);
 
         query.whereEqualTo("course",object);
+
+        dialog = PYPDialog.showProgress(SemesterListActivity.this, "Loading");
         query.findInBackground(new FindCallback<Paper>() {
             @Override
             public void done(List<Paper> papers, ParseException e) {
+                dialog.dismiss();
                 if(e==null) {
                     mAdapter.setPapers(papers);
                     Timber.d("Get papers successfully: "+papers.size());
