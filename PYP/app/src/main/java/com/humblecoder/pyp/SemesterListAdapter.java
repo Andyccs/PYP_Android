@@ -2,13 +2,14 @@ package com.humblecoder.pyp;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.humblecoder.pyp.model.Course;
 import com.humblecoder.pyp.model.Paper;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class SemesterListAdapter extends RecyclerView.Adapter<SemesterListAdapte
                 .inflate(R.layout.semester_list_item, parent, false);
 
         // set the view's size, margins, paddings and layout parameters
-        v.setBackground(context.getResources().getDrawable(R.drawable.bg_course_item_selector));
+        v.setBackground(context.getResources().getDrawable(R.drawable.bg_round_item_selector));
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -63,10 +64,18 @@ public class SemesterListAdapter extends RecyclerView.Adapter<SemesterListAdapte
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.semester.setText(papers.get(position).getAcademicYear()+ " Semester " + papers.get(position).getSemester());
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, QuestionListActivity.class);
+                intent.putExtra("objectId",papers.get(position).getObjectId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

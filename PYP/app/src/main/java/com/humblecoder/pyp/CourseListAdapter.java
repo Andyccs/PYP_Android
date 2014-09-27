@@ -59,7 +59,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
                 .inflate(R.layout.course_list_item, parent, false);
 
         // set the view's size, margins, paddings and layout parameters
-        v.setBackground(context.getResources().getDrawable(R.drawable.bg_course_item_selector));
+        v.setBackground(context.getResources().getDrawable(R.drawable.bg_round_item_selector));
 
 
         ViewHolder vh = new ViewHolder(v);

@@ -39,6 +39,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.humblecoder.pyp.CourseListActivity" />
         </activity>
+        <activity
+            android:name="com.humblecoder.pyp.QuestionListActivity"
+            android:label="@string/title_activity_question_list"
+            android:parentActivityName=".SemesterListActivity">
+        </activity>
     </application>
 
 </manifest>
