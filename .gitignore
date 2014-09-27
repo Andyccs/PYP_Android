@@ -27,3 +27,6 @@ proguard/
 
 # IDE files
 .idea/
+
+# IML
+*.iml
