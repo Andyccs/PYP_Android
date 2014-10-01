@@ -25,7 +25,6 @@ public class Question extends ParseObject {
 
     public void setContent(String content) {
         put("content", content);
-        saveInBackground();
     }
 
     public int getContentType() {
@@ -34,7 +33,6 @@ public class Question extends ParseObject {
 
     public void setContentType(int contentType) {
         put("contentType", contentType);
-        saveInBackground();
     }
 
     public String getQuestionNo() {
@@ -43,15 +41,13 @@ public class Question extends ParseObject {
 
     public void setQuestionNo(String questionNo) {
         put("questionNo", questionNo);
-        saveInBackground();
     }
 
     public ParseObject getPaper() {
         return getParseObject("paper");
     }
 
-    public void setPaper(String paperId) {
-        put("paper", ParseObject.createWithoutData("Paper", paperId));
-        saveInBackground();
+    public void setPaper(Paper paper) {
+        put("paper", paper);
     }
 }

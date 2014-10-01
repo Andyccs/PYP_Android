@@ -37,8 +37,7 @@ public class Paper extends ParseObject {
         return getParseObject("course");
     }
 
-    public void setCourse(String courseId) {
-        put("course", ParseObject.createWithoutData("Course", courseId));
-        saveInBackground();
+    public void setCourse(Course course) {
+        put("course", course);
     }
 }

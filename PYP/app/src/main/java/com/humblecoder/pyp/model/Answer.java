@@ -1,6 +1,7 @@
 package com.humblecoder.pyp.model;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 
@@ -19,13 +20,6 @@ public class Answer extends ParseObject{
     public static String getParseClassName(){
         return "Answer";
     }
-    public String getContent() {
-        return getString("content");
-    }
-
-    public int getContentType() {
-        return getInt("contentType");
-    }
 
     public ParseObject getQuestion() {
         //return getParseObject(Question.getParseClassName());
@@ -36,8 +30,8 @@ public class Answer extends ParseObject{
         return getInt("ranking");
     }
 
-//    public User getUser() {
-//        return (User)get("user");
-//    }
+    public ParseFile getAnswer(){
+        return getParseFile("answer");
+    }
 
 }

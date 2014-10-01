@@ -24,6 +24,7 @@ import com.humblecoder.pyp.model.Question;
 import com.humblecoder.pyp.util.DisplayUtils;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -40,7 +41,6 @@ import butterknife.InjectView;
 /**
  * Created by Andy on 9/22/2014.
  */
-@TargetApi(21)
 public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.ViewHolder> {
 
     // Provide a reference to the type of views that you are using
@@ -58,7 +58,7 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Vi
         ImageView flagDown;
 
         @InjectView(R.id.answer)
-        ImageView answer;
+        ParseImageView answer;
 
         @InjectView(R.id.answer_layout)
         FrameLayout answerLayout;
@@ -105,13 +105,15 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Vi
         // - replace the contents of the view with that element
         DisplayUtils util = new DisplayUtils(Resources.getSystem());
 
-        Picasso.with(context).load(answers.get(position).getContent()).into(holder.answer);
+//        Picasso.with(context).load(answers.get(position).getContent()).into(holder.answer);
+        holder.answer.setParseFile(answers.get(position).getAnswer());
+        holder.answer.loadInBackground();
 
         holder.answerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PhotoActivity.class);
-                intent.putExtra("photo_url",answers.get(position).getContent());
+                intent.putExtra("photo_url",answers.get(position).getAnswer().getUrl());
                 context.startActivity(intent);
             }
         });
@@ -150,13 +152,6 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Vi
                                     flag.setUpDown(1);
                                     flag.setUser(user);
                                     flag.saveInBackground();
-//
-//                                    ParseObject flag = ParseObject.create(Flag.class);
-//                                    flag.put("answer",answers.get(position));
-//                                    flag.put("message","Default Message");
-//                                    flag.put("upDown",1);
-//                                    flag.put("user",user);
-//                                    flag.saveInBackground();
 
                                     holder.flagUp.setVisibility(View.INVISIBLE);
                                     holder.flagDown.setVisibility(View.INVISIBLE);

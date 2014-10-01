@@ -56,7 +56,7 @@
             android:id="@+id/answer_layout"
             android:foreground="@drawable/fg_flat_item_selector"
             android:background="@drawable/bg_flat_item_selector">
-            <ImageView
+            <com.parse.ParseImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:id="@+id/answer"
