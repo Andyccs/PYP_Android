@@ -3,6 +3,7 @@ package com.humblecoder.pyp;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -109,7 +110,9 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Vi
         holder.answerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context, PhotoActivity.class);
+                intent.putExtra("photo_url",answers.get(position).getContent());
+                context.startActivity(intent);
             }
         });
 

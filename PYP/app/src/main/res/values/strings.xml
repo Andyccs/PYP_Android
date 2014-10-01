@@ -10,5 +10,8 @@
     <string name="title_activity_semester_list">Semesters</string>
     <string name="title_activity_question_list">Questions</string>
     <string name="title_activity_answer_list">AnswerListActivity</string>
+    <string name="title_activity_photo">PhotoActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

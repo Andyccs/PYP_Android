@@ -35,7 +35,7 @@ android {
     }
     dependencies {
         compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile files ('lib/Parse-1.6.0.jar')
+        compile files('lib/Parse-1.6.0.jar')
         compile 'com.jakewharton:butterknife:5.1.2'
         compile 'com.jakewharton.timber:timber:2.4.1'
         compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
@@ -47,5 +47,9 @@ android {
         compile "com.squareup.picasso:picasso:2.3.4"
     }
 }
+dependencies {
+    compile 'com.android.support:support-v4:19.+'
+}
+
 
 

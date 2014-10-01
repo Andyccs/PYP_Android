@@ -52,6 +52,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.humblecoder.pyp.QuestionListActivity" />
         </activity>
+        <activity
+            android:name="com.humblecoder.pyp.PhotoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_photo"
+            android:parentActivityName="com.humblecoder.pyp.AnswerListActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.humblecoder.pyp.AnswerListActivity" />
+        </activity>
     </application>
 
 </manifest>
