@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.humblecoder.pyp.model.Course;
 import com.humblecoder.pyp.widget.PYPDialog;
@@ -29,6 +31,9 @@ public class CourseListActivity extends PYPActivity {
 
     @InjectView(R.id.activity_course_list_view)
     RecyclerView recyclerView;
+
+    @InjectView(R.id.fabbutton)
+    Button fab;
 
     private CourseListAdapter mAdapter;
 
@@ -75,6 +80,14 @@ public class CourseListActivity extends PYPActivity {
                 }else{
                     Timber.e("Cannot retrieve Courses objects");
                 }
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SubmitAnswerActivity.class);
+                startActivity(intent);
             }
         });
 
