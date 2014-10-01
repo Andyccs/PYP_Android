@@ -1,24 +1,55 @@
+lpreview = hasProperty('lpreview')
+
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
+
+    compileSdkVersion lpreview ? "android-L" : 19
     buildToolsVersion "20.0.0"
 
-    defaultConfig {
+//    productFlavors { lpreview ? lpreview{} : classic{} }
+
+    defaultConfig lpreview ? {
         applicationId "com.humblecoder.pyp"
-        minSdkVersion 14
-        targetSdkVersion 20
+        minSdkVersion 16
+        targetSdkVersion 'L'
+        versionCode 1
+        versionName "1.0"
+    } : {
+        // Non-L-preview configuration
+        applicationId "com.humblecoder.pyp"
+        minSdkVersion 16
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
+        debug {
+            debuggable true
+        }
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile files('lib/Parse-1.6.0.jar')
+        compile 'com.jakewharton:butterknife:5.1.2'
+        compile 'com.jakewharton.timber:timber:2.4.1'
+        compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+
+        compile "com.android.support:cardview-v7:21.0.0-rc1"
+        compile "com.android.support:recyclerview-v7:21.0.0-rc1"
+        compile "com.android.support:palette-v7:21.0.0-rc1"
+
+        compile "com.squareup.picasso:picasso:2.3.4"
+    }
+}
+dependencies {
+    compile 'com.android.support:support-v4:19.+'
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}
+
+
