@@ -119,6 +119,10 @@ public class CourseListActivity extends PYPActivity {
             finish();
             return true;
         }
+        else if(id == R.id.profile){
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }
