@@ -10,4 +10,10 @@
         android:title="Logout"
         android:orderInCategory="100"
         android:showAsAction="never" />
+
+    <item android:id="@+id/action_search"
+        android:title="Search"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@drawable/search_icon"/>
 </menu>

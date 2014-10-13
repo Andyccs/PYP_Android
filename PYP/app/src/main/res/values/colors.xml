@@ -38,5 +38,6 @@
     </integer-array>
 
     <color name="black_overlay">#66000000</color>
+    <color name="spinner">#4db6ac</color>
 
 </resources>
