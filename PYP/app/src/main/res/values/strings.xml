@@ -16,5 +16,6 @@
     <string name="title_activity_submit_answer">SubmitAnswerActivity</string>
     <string name="activity_photo_comment_button">Comments</string>
     <string name="activity_photo_flag_button">Flag</string>
+    <string name="title_activity_comment_list">CommentListActivity</string>
 
 </resources>

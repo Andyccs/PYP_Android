@@ -12,6 +12,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
@@ -76,6 +77,15 @@ public class PhotoActivity extends Activity {
 
     @InjectView(R.id.activity_photo_flag_button)
     Button btnFlag;
+
+    @OnClick(R.id.activity_photo_comment_button)
+    public void btnComment_onClick() {
+
+        Intent intent = new Intent(this, CommentListActivity.class);
+        intent.putExtra("objectId",_answer.getObjectId());
+        startActivity(intent);
+
+    }
 
     @OnClick(R.id.activity_photo_flag_button)
     public void btnFlag_onClick() {

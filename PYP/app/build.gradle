@@ -45,6 +45,8 @@ android {
         compile "com.android.support:palette-v7:21.0.0-rc1"
 
         compile "com.squareup.picasso:picasso:2.3.4"
+
+        compile "com.ocpsoft:ocpsoft-pretty-time:1.0.6"
     }
 }
 dependencies {

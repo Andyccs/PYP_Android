@@ -6,16 +6,19 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
-        android:name="com.humblecoder.pyp.PYPApplication"
+        android:name=".PYPApplication"
         android:allowBackup="true"
         android:icon="@drawable/application_main_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.humblecoder.pyp.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,40 +27,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.humblecoder.pyp.CreateNewAccountActivity"
+            android:name=".CreateNewAccountActivity"
             android:label="@string/title_activity_create_new_account"
-            android:parentActivityName="com.humblecoder.pyp.LoginActivity" >
+            android:parentActivityName=".LoginActivity" >
         </activity>
         <activity
-            android:name="com.humblecoder.pyp.CourseListActivity"
+            android:name=".CourseListActivity"
             android:label="@string/title_activity_course_list" >
         </activity>
         <activity
-            android:name="com.humblecoder.pyp.SemesterListActivity"
+            android:name=".SemesterListActivity"
             android:label="@string/title_activity_semester_list"
-            android:parentActivityName="com.humblecoder.pyp.CourseListActivity" >
+            android:parentActivityName=".CourseListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.humblecoder.pyp.CourseListActivity" />
         </activity>
         <activity
-            android:name="com.humblecoder.pyp.QuestionListActivity"
+            android:name=".QuestionListActivity"
             android:label="@string/title_activity_question_list"
-            android:parentActivityName="com.humblecoder.pyp.SemesterListActivity" >
+            android:parentActivityName=".SemesterListActivity" >
         </activity>
         <activity
-            android:name="com.humblecoder.pyp.AnswerListActivity"
+            android:name=".AnswerListActivity"
             android:label="@string/title_activity_answer_list"
-            android:parentActivityName="com.humblecoder.pyp.QuestionListActivity" >
+            android:parentActivityName=".QuestionListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.humblecoder.pyp.QuestionListActivity" />
         </activity>
         <activity
-            android:name="com.humblecoder.pyp.PhotoActivity"
+            android:name=".PhotoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_photo"
-            android:parentActivityName="com.humblecoder.pyp.AnswerListActivity"
+            android:parentActivityName=".AnswerListActivity"
             android:theme="@style/FullscreenTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -67,7 +70,10 @@
             android:name=".SubmitAnswerActivity"
             android:label="@string/title_activity_submit_answer" >
         </activity>
+        <activity
+            android:name=".CommentListActivity"
+            android:label="@string/title_activity_comment_list" >
+        </activity>
     </application>
-
 
 </manifest>
