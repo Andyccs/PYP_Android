@@ -14,5 +14,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_submit_answer">SubmitAnswerActivity</string>
+    <string name="activity_photo_comment_button">Comments</string>
+    <string name="activity_photo_flag_button">Flag</string>
 
 </resources>

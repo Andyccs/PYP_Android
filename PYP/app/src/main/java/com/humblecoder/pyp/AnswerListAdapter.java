@@ -113,6 +113,7 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Vi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PhotoActivity.class);
+                intent.putExtra("objectId",answers.get(position).getAnswerId());
                 intent.putExtra("photo_url",answers.get(position).getAnswer().getUrl());
                 context.startActivity(intent);
             }

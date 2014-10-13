@@ -1,22 +1,36 @@
 package com.humblecoder.pyp;
 
+import com.humblecoder.pyp.model.Answer;
+import com.humblecoder.pyp.model.Flag;
 import com.humblecoder.pyp.util.SystemUiHider;
+import com.parse.ParseQuery;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 import com.squareup.picasso.Picasso;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 
@@ -55,8 +69,64 @@ public class PhotoActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
+    private Answer _answer = null;
+
     @InjectView(R.id.fullscreen_content)
     ImageView answer;
+
+    @InjectView(R.id.activity_photo_flag_button)
+    Button btnFlag;
+
+    @OnClick(R.id.activity_photo_flag_button)
+    public void btnFlag_onClick() {
+
+        try {
+
+            ParseQuery<Flag> flagParseQuery = new ParseQuery<Flag>(Flag.getParseClassName());
+            flagParseQuery.whereEqualTo("answer", _answer)
+                    .whereEqualTo("user", ParseUser.getCurrentUser());
+            List<Flag> flagList = flagParseQuery.find();
+
+
+            if(flagList.isEmpty()) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+                final EditText txtMessage = new EditText(this);
+
+                alertDialogBuilder.setTitle("Report")
+                        .setMessage("What is the issue?")
+                        .setView(txtMessage)
+                        .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Flag flag = new Flag();
+                                flag.setUser(ParseUser.getCurrentUser());
+                                flag.setAnswer(_answer);
+                                flag.setMessage(txtMessage.getText().toString());
+
+                                try {
+                                    flag.save();
+                                } catch (ParseException e) {
+                                    Toast.makeText(PhotoActivity.this, "Report cannot be sent now. Please try again later.", Toast.LENGTH_LONG).show();
+                                    Timber.e("Report cannot be sent now. Please try again later.");
+                                    e.printStackTrace();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
+            } else {
+                Toast.makeText(this, "You have already reported.", Toast.LENGTH_LONG).show();
+            }
+
+//            ParseQuery<Answer> query = new ParseQuery<Answer>(Answer.getParseClassName());
+//            Answer answer = query.get(answerId);
+
+        } catch (ParseException e) {
+            Toast.makeText(this, "Connection Problem", Toast.LENGTH_LONG).show();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,11 +195,24 @@ public class PhotoActivity extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-
+//        btnFlag.setOnTouchListener(mDelayHideTouchListener);
 
         //start coding from here
         ButterKnife.inject(this);
+
+        String objectId = getIntent().getStringExtra("objectId");
+        if(objectId == null){
+            Timber.e("No answer id was given by previous activity");
+            finish();
+        }
+
+        ParseQuery<Answer> answerParseQuery = new ParseQuery<Answer>(Answer.getParseClassName());
+        try {
+            _answer = answerParseQuery.get(objectId);
+        } catch(ParseException e) {
+            Timber.e("Answer object cannot be retrieved");
+            e.printStackTrace();
+        }
 
         String url = getIntent().getStringExtra("photo_url");
         if(url==null){

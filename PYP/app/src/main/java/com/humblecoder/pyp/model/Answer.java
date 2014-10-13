@@ -17,6 +17,10 @@ public class Answer extends ParseObject{
     public Answer(){
     }
 
+    public String getAnswerId() {
+        return getObjectId();
+    }
+
     public static String getParseClassName(){
         return "Answer";
     }

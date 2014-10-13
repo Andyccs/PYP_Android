@@ -18,6 +18,10 @@ public class Flag extends ParseObject{
         return "Flag";
     }
 
+    public String getFlagId() {
+        return getObjectId();
+    }
+
     public ParseObject getAnswer() {
         return getParseObject("answer");
     }
