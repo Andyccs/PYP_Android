@@ -82,6 +82,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.humblecoder.pyp.CourseListActivity" />
         </activity>
+        <activity
+            android:name="com.humblecoder.pyp.SearchActivity"
+            android:label="@string/title_activity_search">
+        </activity>
+
     </application>
 
 </manifest>

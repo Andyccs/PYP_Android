@@ -119,9 +119,14 @@ public class CourseListActivity extends PYPActivity {
             finish();
             return true;
         }
-        else if(id == R.id.profile){
+        else if(id == R.id.profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
+        }
+        else if(id == R.id.action_search) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
