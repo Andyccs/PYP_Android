@@ -86,6 +86,11 @@ public class SearchActivity extends Activity {
                     @Override
                     public void done(List<Paper> papers, ParseException e) {
                         if(e == null) {
+                            if(papers.size() == 0) {
+                                Toast.makeText(SearchActivity.this, "There is no such paper.", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
                             Timber.d("Paper ObjectId: " + papers.get(0).getObjectId());
                             Intent intent = new Intent(getApplicationContext(), QuestionListActivity.class);
                             intent.putExtra("objectId", papers.get(0).getObjectId());

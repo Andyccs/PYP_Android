@@ -5,6 +5,7 @@ import android.app.Application;
 import com.humblecoder.pyp.model.*;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import timber.log.Timber;
 
@@ -24,6 +25,7 @@ public class PYPApplication extends Application {
         ParseObject.registerSubclass(Flag.class);
         ParseObject.registerSubclass(Paper.class);
         ParseObject.registerSubclass(Question.class);
+        ParseObject.registerSubclass(ParseUser.class);
 
         Parse.initialize(this, "cztzxFVJLJ3PCoSGJeyWU9PX0S8nsNlXtIIwIV98", "VZnqAvCGLZiBaDcrSPFLAY8jgQhP5dwUJdAfRbAx");
 
