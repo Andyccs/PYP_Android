@@ -38,6 +38,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
+/**
+ * Allow user to submit answer in picture format
+ *
+ * @author HumbleCoder
+ */
 public class SubmitAnswerActivity extends Activity {
 
     @InjectView(R.id.course_selection)

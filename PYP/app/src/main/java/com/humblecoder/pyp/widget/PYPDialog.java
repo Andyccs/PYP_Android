@@ -8,6 +8,13 @@ import android.widget.TextView;
 
 import com.humblecoder.pyp.R;
 
+/**
+ * A custom dialog box that show loading dialog.
+ * This widget is useful to tell the user that the
+ * application is doing something, instead of not responding
+ *
+ * @author HumbleCoder
+ */
 public class PYPDialog extends ProgressDialog {
 
     private TextView loadingText;

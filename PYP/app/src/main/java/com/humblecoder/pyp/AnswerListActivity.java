@@ -23,7 +23,16 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
-
+/**
+ * Show a list of answer.
+ *
+ * A question id must be given by previous activity so that a
+ * list of answer that particular question can be shown. The question id
+ * should be put in the intent that start the activity. The key
+ * for the extra intent is "objectId".
+ *
+ * @author HumbleCoder
+ */
 public class AnswerListActivity extends Activity {
 
     @InjectView(R.id.activity_answer_list_view)

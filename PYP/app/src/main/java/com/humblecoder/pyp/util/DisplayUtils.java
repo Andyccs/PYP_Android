@@ -2,6 +2,11 @@ package com.humblecoder.pyp.util;
 
 import android.content.res.Resources;
 
+/**
+ * An utility that convert to/fo dp and pixel
+ *
+ * @author HumbleCoder
+ */
 public class DisplayUtils {
 
     private Resources resources;

@@ -23,7 +23,20 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
-
+/**
+ * Show a list of semester. A course id must be given by
+ * previous activity so that a list of semester of that
+ * particular course can be shown. The course id should be
+ * put in the intent that start the activity. The key
+ * for the extra intent is "objectId".
+ *
+ * A list of question will be shown if a semester is choosen
+ *
+ * @see com.humblecoder.pyp.QuestionListActivity
+ * @see android.content.Intent
+ *
+ * @author HumbleCoder
+ */
 public class SemesterListActivity extends PYPActivity {
 
     @InjectView(R.id.activity_semester_list_view)

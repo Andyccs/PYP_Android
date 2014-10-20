@@ -16,7 +16,20 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-
+/**
+ * This is main activity and launch activity for the application.
+ * During initialization, the activity will try to check whether
+ * a user has login before. If true, the the user will be logged in
+ * to the application without a need to type username and password.
+ * Else, the user has to key in username and password or register
+ * for new account if he didn't have one.
+ *
+ * @see com.parse.ParseUser
+ * @see com.humblecoder.pyp.CreateNewAccountActivity
+ * @see com.humblecoder.pyp.CourseListActivity
+ *
+ * @author HumbleCoder
+ */
 public class LoginActivity extends PYPActivity {
 
     @InjectView(R.id.username)

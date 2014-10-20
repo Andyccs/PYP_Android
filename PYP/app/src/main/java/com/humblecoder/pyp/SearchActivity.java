@@ -29,7 +29,9 @@ import butterknife.InjectView;
 import timber.log.Timber;
 
 /**
- * Created by User on 13-Oct-14.
+ * Allow user to search for an answer.
+ *
+ * @author HumbleCoder
  */
 public class SearchActivity extends Activity {
 

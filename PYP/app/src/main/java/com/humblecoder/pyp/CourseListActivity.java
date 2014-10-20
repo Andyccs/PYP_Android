@@ -26,7 +26,21 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
-@TargetApi(21)
+/**
+ * This activity shows a list of course that is available
+ * in the application. From here, user can access {@code SearchActivity}
+ * , {@code ProfileActivity}, and {@code SubmitAnswerActivity}.
+ * User can log out too. If user choose a course in the activity,
+ * he will be redirected to SemesterListActivity.
+ *
+ * @see com.humblecoder.pyp.SemesterListActivity
+ * @see com.humblecoder.pyp.SearchActivity
+ * @see com.humblecoder.pyp.ProfileActivity
+ * @see com.humblecoder.pyp.SubmitAnswerActivity
+ * @see com.parse.ParseUser
+ *
+ * @author HumbleCoder
+ */
 public class CourseListActivity extends PYPActivity {
 
     @InjectView(R.id.activity_course_list_view)

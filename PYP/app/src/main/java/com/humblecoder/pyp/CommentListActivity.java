@@ -26,7 +26,19 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-
+/**
+ * Show a list of comment for a particular answer.
+ * User can also make comment for an answer.
+ *
+ * A answer id must be given by previous activity so that a
+ * list of comment that particular answer can be shown. The answer id
+ * should be put in the intent that start the activity. The key
+ * for the extra intent is "objectId".
+ *
+ * @see android.content.Intent
+ *
+ * @author HumbleCoder
+ */
 public class CommentListActivity extends Activity {
 
     @InjectView(R.id.activity_comment_list_view)

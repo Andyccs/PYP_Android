@@ -23,7 +23,24 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
-
+/**
+ * show a list of question of a particular paper. For
+ * each question, number of available answers will be
+ * shown too.
+ *
+ * A paper id must be given by previous activity so
+ * that a list of question of that semester for a
+ * course can be shown. The course id should be
+ * put in the intent that start the activity. The key
+ * for the extra intent is "objectId".
+ *
+ * A list of answer will be shown if a question is chosen.
+ *
+ * @see com.humblecoder.pyp.AnswerListActivity
+ * @see android.content.Intent
+ *
+ * @author HumbleCoder
+ */
 public class QuestionListActivity extends Activity {
 
     @InjectView(R.id.activity_question_list_view)

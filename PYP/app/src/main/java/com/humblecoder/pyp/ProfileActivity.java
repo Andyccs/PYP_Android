@@ -31,7 +31,12 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
-
+/**
+ * Show user profile. It also show a list of answer
+ * that has been posted by the user
+ *
+ * @author HumbleCoder
+ */
 public class ProfileActivity extends Activity {
 
     @InjectView(R.id.title)

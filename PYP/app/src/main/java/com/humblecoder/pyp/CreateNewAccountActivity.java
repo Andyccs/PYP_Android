@@ -16,7 +16,18 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-
+/**
+ * This activity allow user to create an account for the
+ * application. The user need to enter username, password, and
+ * email address to register an account. All fields are required.
+ * After an account is created, the user will be logged in to the
+ * application and redirected to {@code CourseListActivity} .
+ *
+ * @see com.humblecoder.pyp.CourseListActivity
+ * @see com.parse.ParseUser
+ *
+ * @author HumbleCoder
+ */
 public class CreateNewAccountActivity extends PYPActivity {
 
     @InjectView(R.id.text)
