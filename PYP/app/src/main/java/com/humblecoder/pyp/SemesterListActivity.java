@@ -24,11 +24,13 @@ import butterknife.InjectView;
 import timber.log.Timber;
 
 /**
- * Show a list of semester. A course id must be given by
+ * Show a list of semester.
+ *
+ * <p>A course id must be given by
  * previous activity so that a list of semester of that
  * particular course can be shown. The course id should be
  * put in the intent that start the activity. The key
- * for the extra intent is "objectId".
+ * for the extra intent is "objectId".</p>
  *
  * A list of question will be shown if a semester is choosen
  *

@@ -24,12 +24,12 @@ import butterknife.InjectView;
 import timber.log.Timber;
 
 /**
- * Show a list of answer.
+ * <p>Show a list of answer.</p>
  *
- * A question id must be given by previous activity so that a
+ * <p>A question id must be given by previous activity so that a
  * list of answer that particular question can be shown. The question id
  * should be put in the intent that start the activity. The key
- * for the extra intent is "objectId".
+ * for the extra intent is "objectId".</p>
  *
  * @author HumbleCoder
  */

@@ -39,11 +39,11 @@ import timber.log.Timber;
  * A full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  *
- * This activity show an answer in picture format. A answer
+ * <p>This activity show an answer in picture format. A answer
  * id must be given by previous activity so that a
  * answer of that particular course can be shown.
  * The answer id should be put in the intent that
- * start the activity. The key for the extra intent is "objectId".
+ * start the activity. The key for the extra intent is "objectId".</p>
  *
  * User can navigate to {@code CommentListActivity} from here.
  *

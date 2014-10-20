@@ -30,10 +30,10 @@ import timber.log.Timber;
  * Show a list of comment for a particular answer.
  * User can also make comment for an answer.
  *
- * A answer id must be given by previous activity so that a
+ * <p>A answer id must be given by previous activity so that a
  * list of comment that particular answer can be shown. The answer id
  * should be put in the intent that start the activity. The key
- * for the extra intent is "objectId".
+ * for the extra intent is "objectId".</p>
  *
  * @see android.content.Intent
  *

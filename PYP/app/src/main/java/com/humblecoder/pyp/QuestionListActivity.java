@@ -28,11 +28,11 @@ import timber.log.Timber;
  * each question, number of available answers will be
  * shown too.
  *
- * A paper id must be given by previous activity so
+ * <p>A paper id must be given by previous activity so
  * that a list of question of that semester for a
  * course can be shown. The course id should be
  * put in the intent that start the activity. The key
- * for the extra intent is "objectId".
+ * for the extra intent is "objectId".</p>
  *
  * A list of answer will be shown if a question is chosen.
  *
