@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.humblecoder.pyp" > <!-- targetSdkVersion set to 19 from build.gradle on non-L-preview builds -->
+    package="com.humblecoder.pyp" >
     <uses-sdk tools:node="replace" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -86,7 +86,9 @@
             android:name="com.humblecoder.pyp.SearchActivity"
             android:label="@string/title_activity_search">
         </activity>
-
+        <!--<uses-library android:name="android.test.runner" />-->
     </application>
-
+    <!--<instrumentation-->
+        <!--android:targetPackage="com.humblecoder.pyp"-->
+        <!--android:name="android.test.InstrumentationTestRunner" />-->
 </manifest>
