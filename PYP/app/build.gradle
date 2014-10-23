@@ -1,21 +1,11 @@
-lpreview = hasProperty('lpreview')
-
 apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion lpreview ? "android-L" : 19
+    compileSdkVersion 19
     buildToolsVersion "20.0.0"
 
-//    productFlavors { lpreview ? lpreview{} : classic{} }
-
-    defaultConfig lpreview ? {
-        applicationId "com.humblecoder.pyp"
-        minSdkVersion 16
-        targetSdkVersion 'L'
-        versionCode 1
-        versionName "1.0"
-    } : {
+    defaultConfig {
         // Non-L-preview configuration
         applicationId "com.humblecoder.pyp"
         minSdkVersion 16
@@ -47,6 +37,9 @@ android {
         compile "com.squareup.picasso:picasso:2.3.4"
 
         compile "com.ocpsoft:ocpsoft-pretty-time:1.0.6"
+    }
+    lintOptions{
+        abortOnError false
     }
 }
 dependencies {
