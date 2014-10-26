@@ -42,7 +42,8 @@ dependencies {
     compile "com.android.support:palette-v7:21.0.+"
     compile "com.squareup.picasso:picasso:2.3.4"
     compile "com.ocpsoft:ocpsoft-pretty-time:1.0.6"
-    androidTestCompile 'com.jayway.android.robotium:robotium-solo:4.3'
+
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.2.1'
 }
 
 
