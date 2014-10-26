@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 
+import com.humblecoder.pyp.adapter.AnswerListAdapter;
 import com.humblecoder.pyp.model.Answer;
-import com.humblecoder.pyp.model.Question;
 import com.humblecoder.pyp.widget.PYPDialog;
 import com.parse.FindCallback;
 import com.parse.ParseException;

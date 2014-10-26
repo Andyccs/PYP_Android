@@ -3,25 +3,18 @@ package com.humblecoder.pyp;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.humblecoder.pyp.adapter.AnswerListAdapter;
 import com.humblecoder.pyp.model.Answer;
-import com.humblecoder.pyp.model.Course;
 import com.humblecoder.pyp.widget.PYPDialog;
 import com.humblecoder.pyp.widget.RoundDrawable;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseImageView;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 

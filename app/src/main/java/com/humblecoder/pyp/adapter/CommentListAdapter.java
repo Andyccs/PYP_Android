@@ -1,4 +1,4 @@
-package com.humblecoder.pyp;
+package com.humblecoder.pyp.adapter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.humblecoder.pyp.R;
 import com.humblecoder.pyp.model.Comment;
 import com.ocpsoft.pretty.time.PrettyTime;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;

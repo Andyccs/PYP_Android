@@ -1,6 +1,5 @@
-package com.humblecoder.pyp;
+package com.humblecoder.pyp.adapter;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,29 +7,24 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.humblecoder.pyp.PhotoActivity;
+import com.humblecoder.pyp.R;
 import com.humblecoder.pyp.model.Answer;
 import com.humblecoder.pyp.model.Flag;
-import com.humblecoder.pyp.model.Question;
 import com.humblecoder.pyp.util.DisplayUtils;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseImageView;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.humblecoder.pyp;
+package com.humblecoder.pyp.adapter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.humblecoder.pyp.R;
+import com.humblecoder.pyp.SemesterListActivity;
 import com.humblecoder.pyp.model.Course;
 
 import java.util.ArrayList;
@@ -57,10 +59,6 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         // create a new view
         CardView v = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.course_list_item, parent, false);
-
-        // set the view's size, margins, paddings and layout parameters
-        v.setBackground(context.getResources().getDrawable(R.drawable.bg_round_item_selector));
-
 
         ViewHolder vh = new ViewHolder(v);
         return vh;

@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.humblecoder.pyp.adapter.CommentListAdapter;
 import com.humblecoder.pyp.model.Answer;
 import com.humblecoder.pyp.model.Comment;
 import com.humblecoder.pyp.widget.PYPDialog;
