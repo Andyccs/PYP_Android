@@ -23,8 +23,8 @@ android:
     - sys-img-armeabi-v7a-android-19
     - sys-img-x86-android-19
 
-    before_script:
-    - chmod ugo+x a+x gradlew
+before_script:
+ - chmod ugo+x a+x gradlew
 
-    script:
-    - sudo ./gradlew build connectedCheck
+script:
+ - sudo ./gradlew build connectedCheck
