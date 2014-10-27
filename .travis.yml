@@ -27,6 +27,8 @@ android:
 before_script:
  - chmod a+x gradlew
  - ls
+ - ls ..
+ - ls ../..
 
 script:
  - sudo ./gradlew build connectedCheck
