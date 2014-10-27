@@ -115,7 +115,7 @@ public class CreateNewAccountTest extends ActivityInstrumentationTestCase2<Creat
         Thread.sleep(2000);
 
         //try login. if login fail, exception will be thrown
-        ParseUser.logIn(NORMAL_USERNAME, NORMAL_PASSWORD);
+        ParseUser.logIn(username, password);
 
         //login successfully, now, delete the account
         ParseUser.getCurrentUser().delete();
