@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class CreateNewAccountActivityTest extends ActivityInstrumentationTestCase2<CreateNewAccountActivity>{
+public class CreateNewAccountTest extends ActivityInstrumentationTestCase2<CreateNewAccountActivity>{
     private Solo solo;
     private static final String VALID_EMAIL = "abcde12345@e.ntu.edu.sg";
     private static final String INVALID_EMAIL = "abcde12345@hotmail.com";
@@ -41,7 +41,7 @@ public class CreateNewAccountActivityTest extends ActivityInstrumentationTestCas
     @InjectView(R.id.create_account_button)
     Button createAccountButton;
 
-    public CreateNewAccountActivityTest() {
+    public CreateNewAccountTest() {
         super(CreateNewAccountActivity.class);
     }
 
