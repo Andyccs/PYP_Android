@@ -15,13 +15,12 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
-import timber.log.Timber;
 
 
 public class CreateNewAccountActivityTest extends ActivityInstrumentationTestCase2<CreateNewAccountActivity>{
     private Solo solo;
-    private static final String VALID_EMAIL = "andy0017@e.ntu.edu.sg";
+    private static final String VALID_EMAIL = "abcde12345@e.ntu.edu.sg";
+    private static final String INVALID_EMAIL = "abcde12345@hotmail.com";
     private static final String NORMAL_USERNAME = "humblecoder";
     private static final String LONG_USERNAME = "averylongusernametopurposelyfailthestresstest";
 
@@ -70,19 +69,6 @@ public class CreateNewAccountActivityTest extends ActivityInstrumentationTestCas
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-
-    }
-
-    private void deleteTestingParseUserAccount() throws ParseException{
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-        List<ParseObject> users = query.find();
-        for(ParseObject user : users){
-            if(user.get("username").toString().equals(NORMAL_USERNAME) ||
-                    user.get("username").toString().equals(LONG_USERNAME) ){
-                user.deleteEventually();
-            }
-        }
-
     }
 
     public void testPrecondition() throws Exception {
@@ -91,18 +77,38 @@ public class CreateNewAccountActivityTest extends ActivityInstrumentationTestCas
     }
 
     public void testNormalRegistration() throws InterruptedException, ParseException {
+        registerAccount(VALID_EMAIL,NORMAL_USERNAME,NORMAL_PASSWORD);
+    }
 
+    public void testRegistrationLongUsername() throws InterruptedException, ParseException  {
+        registerAccount(VALID_EMAIL,LONG_USERNAME,NORMAL_PASSWORD);
+    }
+
+    public void testRegistrationLongPassword() throws InterruptedException, ParseException  {
+        registerAccount(VALID_EMAIL,NORMAL_USERNAME,LONG_PASSWORD);
+    }
+
+    public void testRegistrationInvalidEmail() throws InterruptedException{
+        try{
+            registerAccount(INVALID_EMAIL,NORMAL_USERNAME,NORMAL_PASSWORD);
+            fail("Registered with an invalid email address");
+        }catch (ParseException e){
+
+        }
+    }
+
+    private void registerAccount(String email, String username, String password) throws InterruptedException, ParseException  {
         //enter required text into EditText field
-        solo.enterText(emailField,VALID_EMAIL);
-        solo.enterText(usernameField,NORMAL_USERNAME);
-        solo.enterText(passwordField,NORMAL_PASSWORD);
-        solo.enterText(confirmPasswordField, NORMAL_PASSWORD);
+        solo.enterText(emailField,email);
+        solo.enterText(usernameField,username);
+        solo.enterText(passwordField,password);
+        solo.enterText(confirmPasswordField, password);
 
         //make sure everything is enter correctly
-        assertEquals(VALID_EMAIL, emailField.getText().toString());
-        assertEquals(NORMAL_USERNAME, usernameField.getText().toString());
-        assertEquals(NORMAL_PASSWORD, passwordField.getText().toString());
-        assertEquals(NORMAL_PASSWORD, confirmPasswordField.getText().toString());
+        assertEquals(email, emailField.getText().toString());
+        assertEquals(username, usernameField.getText().toString());
+        assertEquals(password, passwordField.getText().toString());
+        assertEquals(password, confirmPasswordField.getText().toString());
 
         //start creating account
         solo.clickOnView(createAccountButton);
@@ -117,18 +123,15 @@ public class CreateNewAccountActivityTest extends ActivityInstrumentationTestCas
         solo.finishOpenedActivities();
     }
 
-    public void testRegistrationLongUsername() throws InterruptedException {
-        //enter required text into EditText field
-        solo.enterText(emailField,VALID_EMAIL);
-        solo.enterText(usernameField,LONG_USERNAME);
-        solo.enterText(passwordField,NORMAL_PASSWORD);
-        solo.enterText(confirmPasswordField, NORMAL_PASSWORD);
-
-        //make sure everything is enter correctly
-        assertEquals(VALID_EMAIL, emailField.getText().toString());
-        assertEquals(LONG_USERNAME, usernameField.getText().toString());
-        assertEquals(NORMAL_PASSWORD, passwordField.getText().toString());
-        assertEquals(NORMAL_PASSWORD, confirmPasswordField.getText().toString());
+    private void deleteTestingParseUserAccount() throws ParseException{
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+        List<ParseObject> users = query.find();
+        for(ParseObject user : users){
+            if(user.get("username").toString().equals(NORMAL_USERNAME) ||
+                    user.get("username").toString().equals(LONG_USERNAME) ){
+                user.deleteEventually();
+            }
+        }
     }
 
     @Override
