@@ -30,9 +30,10 @@ before_install:
 
 before_script:
  - chmod a+x gradlew
- - ls
- - ls ..
- - ls ../..
+ - ls -a
+ - ls -a ..
+ - ls -a ../..
+ - ls -a ../../..
 
 script:
  - sudo ./gradlew build connectedCheck
