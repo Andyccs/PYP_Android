@@ -24,9 +24,10 @@ android:
     - sys-img-armeabi-v7a-android-19
     - sys-img-x86-android-19
 
-before_install:
- - pwd
- - echo $PATH
+#before_install:
+# - pwd
+# - echo $PATH
+# - echo $ANDROID_HOME
 
 before_script:
  - chmod a+x gradlew
@@ -34,6 +35,9 @@ before_script:
  - ls -a ..
  - ls -a ../..
  - ls -a ../../..
+ - export $PATH=$PATH:/usr/local/android-sdk
+ - echo $PATH
+ - echo $ANDROID_HOME
 
 script:
  - sudo ./gradlew build connectedCheck
