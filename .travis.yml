@@ -24,7 +24,7 @@ android:
     - sys-img-x86-android-19
 
 before_script:
- - chmod ugo+x a+x gradlew
+ - chmod a+x gradlew
 
 script:
  - sudo ./gradlew build connectedCheck
