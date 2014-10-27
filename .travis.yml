@@ -35,7 +35,9 @@ before_script:
  - ls -a ..
  - ls -a ../..
  - ls -a ../../..
+ - l /usr/local/android-sdk
  - export PATH=${PATH}:/usr/local/android-sdk
+ - export PATH=${PATH}:/usr/local/android-sdk/build-tools
  - echo $PATH
  - echo $ANDROID_HOME
 
