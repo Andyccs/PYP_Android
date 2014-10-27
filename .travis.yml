@@ -3,8 +3,8 @@ android:
   components:
     # Uncomment the lines below if you want to
     # use the latest revision of Android SDK Tools
-    # - platform-tools
-    # - tools
+    - platform-tools
+    - tools
 
     # The BuildTools version used by your project
     - build-tools-20.0.0
@@ -35,7 +35,7 @@ before_script:
  - ls -a ..
  - ls -a ../..
  - ls -a ../../..
- - l /usr/local/android-sdk
+ - ls /usr/local/android-sdk
  - export PATH=${PATH}:/usr/local/android-sdk
  - export PATH=${PATH}:/usr/local/android-sdk/build-tools
  - echo $PATH
