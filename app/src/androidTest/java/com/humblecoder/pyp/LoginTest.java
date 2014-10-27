@@ -3,6 +3,8 @@ package com.humblecoder.pyp;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -11,6 +13,7 @@ import com.parse.SignUpCallback;
 import com.robotium.solo.Solo;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import timber.log.Timber;
 
 /**
@@ -21,6 +24,15 @@ public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
     private static final String USERNAME = "humblecoder";
     private static final String PASSWORD = "humblecoder";
     private static final String EMAIL = "abcde12345@e.ntu.edu.sg";
+
+    @InjectView(R.id.username)
+    EditText usernameField;
+
+    @InjectView(R.id.password)
+    EditText passwordField;
+
+    @InjectView(R.id.login_button)
+    Button login;
 
     public LoginTest() {
         super(LoginActivity.class);
@@ -53,6 +65,25 @@ public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
         user.setEmail(EMAIL);
 
         user.signUp();
+    }
+
+    public void testPrecondition() throws Exception {
+        solo.waitForActivity(CreateNewAccountActivity.class);
+        solo.assertCurrentActivity("Activity is not active", CreateNewAccountActivity.class);
+    }
+
+    public void testLoginNormal() throws InterruptedException {
+        solo.enterText(usernameField,USERNAME);
+        solo.enterText(passwordField,PASSWORD);
+
+        assertEquals(USERNAME,usernameField.getText().toString());
+        assertEquals(PASSWORD,passwordField.getText().toString());
+
+        solo.clickOnView(login);
+        Thread.sleep(1000);
+
+        assertEquals(USERNAME,ParseUser.getCurrentUser().getUsername());
+        ParseUser.logOut();
     }
 
     @Override
